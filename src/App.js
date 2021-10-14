@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Main from './components/Main';
+import AdminMain from './components/Admin/AdminMain';
+import NotFound from './components/NotFound';
+import ProductIndiv from './components/Products/ProductIndiv';
+import EditItem from './components/Admin/Item/EditItem';
+import { Route, Switch } from 'react-router';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+       
+        <Switch>
+        <Route exact path="/">
+            <Main/>
+        </Route>
+        <Route path="/admin">
+            <AdminMain/>
+        </Route>
+        <Route path="/item/:id">
+            <ProductIndiv/>
+        </Route>
+        <Route path="admin//edit/:id">
+            <EditItem/>
+        </Route>
+          <Route component={NotFound}/>
+          </Switch>
+        
+
     </div>
   );
 }
